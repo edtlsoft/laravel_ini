@@ -46203,44 +46203,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-var app = new Vue({
-  el: '#app'
-});
-
-/***/ }),
-
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -46368,26 +46330,64 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
+/***/ "./resources/js/login.js":
+/*!*******************************!*\
+  !*** ./resources/js/login.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+var app = new Vue({
+  el: '#app'
+});
+
+/***/ }),
+
+/***/ "./resources/sass/login.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/login.scss ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\r\nundefined\r\n       ^\r\n      Can't find stylesheet to import.\n@import '~bootstrap/scss/bootstrap';\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  stdin 9:9  root stylesheet\r\n      in C:\\wamp64\\www\\laravel\\laravel_ini\\resources\\sass\\app.scss (line 9, column 9)\n    at runLoaders (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\webpack\\lib\\NormalModule.js:301:20)\n    at C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at render (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass-loader\\lib\\loader.js:52:13)\n    at Function.$2 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:25378:48)\n    at vB.$2 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:16223:16)\n    at tz.ve (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:9275:42)\n    at tz.vd (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:9277:32)\n    at ic.uo (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8583:46)\n    at t6.$0 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8728:7)\n    at Object.eu (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:1569:80)\n    at aj.bd (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8646:3)\n    at is.bd (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8576:25)\n    at is.cF (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8563:6)\n    at oy.cF (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8350:35)\n    at Object.o (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:1442:19)\n    at C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:5284:51\n    at w0.a (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:1453:71)\n    at w0.$2 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8365:23)\n    at uC.$2 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8360:25)\n    at tz.ve (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:9275:42)\n    at tz.vd (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:9277:32)\n    at ic.uo (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8583:46)\n    at t6.$0 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8728:7)\n    at Object.eu (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:1569:80)\n    at aj.bd (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8646:3)\n    at is.bd (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8576:25)\n    at is.cF (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8563:6)\n    at oy.cF (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8350:35)\n    at Object.o (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:1442:19)\n    at C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:5835:52\n    at w0.a (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:1453:71)\n    at w0.$2 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8365:23)\n    at uC.$2 (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:8360:25)\n    at tz.ve (C:\\wamp64\\www\\laravel\\laravel_ini\\node_modules\\sass\\sass.dart.js:9275:42)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!*****************************************************************!*\
+  !*** multi ./resources/js/login.js ./resources/sass/login.scss ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\laravel\laravel_ini\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\laravel\laravel_ini\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\laravel\laravel_ini\resources\js\login.js */"./resources/js/login.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\laravel\laravel_ini\resources\sass\login.scss */"./resources/sass/login.scss");
 
 
 /***/ })
