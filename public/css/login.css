@@ -5618,8 +5618,10 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.fondo-login {
+  background-image: url(/images/fondo_proyecto.jpg?034f0e9fa2174a7e28a0e18f060a479a);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 

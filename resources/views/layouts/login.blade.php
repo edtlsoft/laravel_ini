@@ -16,12 +16,11 @@
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 <body>
-
-    <div class="container-fluid fondo-login" id="app">
-        <div class="div-logo-scpns">
-            <img src="{{ asset('img/sintranordessa.png') }}" class="img-logo" />
-        </div>
+    <div id="app">
+        <h1> <i class="fas fa-building"></i> Hola mundo</h1>
     </div>
+
+    @yield('content')
 
 
 </body>
