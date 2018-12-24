@@ -24,5 +24,8 @@
     </div>
 
 
+    <router-view></router-view>
+
+
 </body>
 </html>

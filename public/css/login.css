@@ -5625,3 +5625,14 @@ readers do not read off random characters that represent icons */
   background-size: cover;
 }
 
+.div-logo-scpns {
+  margin: 20px;
+  text-align: center;
+}
+
+.img-logo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+
