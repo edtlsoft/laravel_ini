@@ -4,7 +4,8 @@
         <div class="panel panel-info" >
                 
             <div class="panel-heading">
-                <div class="panel-title">Iniciar Session</div>
+                <div class="panel-title">Restablecer la contraseña</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Olvido su contraseña?</a></div>
             </div>
 
             <div id="div-alerts-login">
@@ -23,12 +24,12 @@
                             
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" v-model="usuario" placeholder="username or email">                                        
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
                     </div>
                         
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" v-model="password" placeholder="password">
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
                     </div>
                             
 
@@ -36,7 +37,7 @@
                     <div class="input-group">
                         <div class="checkbox">
                             <label>
-                                <input id="login-remember" type="checkbox" name="remember" v-model="remember"> Recordarme
+                                <input id="login-remember" type="checkbox" name="remember" value="1"> Recordarme
                             </label>
                         </div>
                     </div>
@@ -54,10 +55,10 @@
                     <div class="form-group">
                         <div class="col-md-12 control">
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                Olvido su contraseña? 
-                            <router-link to="/PasswordReset">
-                                Click aqui
-                            </router-link>
+                                Don't have an account! 
+                            <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                Registrarme
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -73,16 +74,8 @@
 
 <script>
     export default {
-        //el: '#loginbox',
-        data() {
-            return({
-                usuario : 'usuario',
-                password: 'password',
-                remember: false,
-            })
-        },
         mounted() {
-            console.log('Component mounted Login.vue.')
+            console.log('Component mounted.')
         }
     }
 </script>

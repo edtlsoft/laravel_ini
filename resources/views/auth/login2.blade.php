@@ -9,23 +9,35 @@
 
     <title>Login | {{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/login.js') }}" defer></script>
+    
 
     <!-- Styles -->
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container-fluid fondo-login" id="app">
-        <div class="div-logo-scpns">
-            <img src="{{ asset('img/sintranordessa.png') }}" class="img-logo" />
-        </div>
-    </div>
+    
+<div class="container-fluid fondo-login" id="app">
 
+    <div class="div-logo-scpns">
+        <img src="{{ asset('img/sintranordessa.png') }}" class="img-logo" />
+    </div>
 
     <router-view></router-view>
 
+    <router-link to="/">Login</router-link>
+    <router-link to="/PasswordReset">PasswordReset</router-link>
+
+
+
+</div>
+
+
+    
+
+
+<!-- Scripts -->
+<script src="{{ asset('js/login.js') }}"></script>
 
 </body>
 </html>
