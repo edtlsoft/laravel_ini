@@ -10,7 +10,7 @@
             <div id="div-alerts-login">
                 <div class="alert alert-info alert-dismissible hidden">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong> <img src="img/Cargar.gif" width="20" height="20"> Ingresando</strong>
+                    <strong> <img src="img/Cargar.gif" width="20" height="20"> Ingresando </strong>
                 </div> 
             </div>
                 
@@ -19,7 +19,7 @@
 
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                     
-                <form id="loginform" class="form-horizontal" role="form">
+                <form id="loginform" class="form-horizontal" role="form" @submit.prevent="iniciarSesion()">
                             
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -46,7 +46,7 @@
                         <!-- Button -->
 
                         <div class="col-sm-12 controls">
-                            <button type="button" id="btn-login" class="btn btn-primary"> <span class="glyphicon glyphicon-user"></span> INGRESAR </button>
+                            <button type="submit" id="btn-login" class="btn btn-primary"> <span class="glyphicon glyphicon-user"></span> INGRESAR </button>
                         </div>
                     </div>
 
@@ -76,12 +76,45 @@
         //el: '#loginbox',
         data() {
             return({
-                usuario : 'usuario',
-                password: 'password',
+                token   : document.getElementsByName('_token')[0].value,
+                usuario : '',
+                password: '',
                 remember: false,
+
+                div_alert : document.getElementById('div-alerts-login'),
             })
         },
+        methods: {
+            iniciarSesion: function(){
+                axios.interceptors.request.use((config) => {
+                    //console.log(this.divs_alerts('info', '* Comprobando credenciales', 0));
+                    document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('info', '* Comprobando credenciales', 0);
+                    return config;
+                });
+
+                axios.post('login', {
+                    _token   : this.token,
+                    email    : this.usuario,
+                    password : this.password,
+                    remember : this.remember,
+                }, {
+                    before: (xhr) => { 
+                        divs_alerts();
+                    }
+                })
+                .then( data => console.log('success', data) )
+                .catch( error => console.log('error', error) )
+            },
+            divs_alerts: function( tipo, message, img ){
+                let image = '';
+                if( img == 1 ) image = '<img src="img/Cargar.gif" width="20" height="20">';
+                let alert = '<div class="alert alert-'+ tipo +' alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong> '+ image +' '+ message +'</strong> </div>';
+
+                return alert;
+            }
+        },
         mounted() {
+            //axios.post('logout', { _token: this.token });
             console.log('Component mounted Login.vue.')
         }
     }
