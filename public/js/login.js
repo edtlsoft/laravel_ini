@@ -1836,6 +1836,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //el: '#loginbox',
   data: function data() {
@@ -1843,8 +1844,7 @@ __webpack_require__.r(__webpack_exports__);
       token: document.getElementsByName('_token')[0].value,
       usuario: '',
       password: '',
-      remember: false,
-      div_alert: document.getElementById('div-alerts-login')
+      remember: false
     };
   },
   methods: {
@@ -1852,23 +1852,26 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.interceptors.request.use(function (config) {
-        //console.log(this.divs_alerts('info', '* Comprobando credenciales', 0));
         document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('info', '* Comprobando credenciales', 0);
         return config;
       });
       axios.post('login', {
         _token: this.token,
-        email: this.usuario,
+        usuario: this.usuario,
         password: this.password,
         remember: this.remember
-      }, {
-        before: function before(xhr) {
-          divs_alerts();
-        }
       }).then(function (data) {
-        return console.log('success', data);
+        console.log('success', data);
+
+        if (data.data.success == 1) {
+          document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('success', ' Ingresando', 1);
+          location.href = '/home';
+        } else {
+          document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('danger', '* ' + data.data.msgerror + '', 0);
+        }
       }).catch(function (error) {
-        return console.log('error', error);
+        console.log('error', error);
+        document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('danger', '* Error desconocido al intentar iniciar session.', 0);
       });
     },
     divs_alerts: function divs_alerts(tipo, message, img) {
@@ -1951,27 +1954,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  //el: '#loginbox',
+  data: function data() {
+    return {
+      token: document.getElementsByName('_token')[0].value,
+      email: ''
+    };
+  },
+  methods: {
+    restablecerContrasena: function restablecerContrasena() {
+      var _this = this;
+
+      axios.interceptors.request.use(function (config) {
+        console.log(_this.div_alert);
+        document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('info', '* Enviando correo', 1);
+        return config;
+      });
+      axios.post('/password/email', {
+        _token: this.token,
+        email: this.email
+      }).then(function (data) {
+        console.log('success', data);
+
+        if (data.data.success == 1) {
+          document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('success', ' Ingresando', 1);
+          location.href = '/home';
+        } else {
+          document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('danger', '* ' + data.data.msgerror + '', 0);
+        }
+      }).catch(function (error) {
+        console.log('error', error);
+        document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('danger', '* Error desconocido al intentar enviar el correo.', 0);
+      });
+    },
+    divs_alerts: function divs_alerts(tipo, message, img) {
+      var image = '';
+      if (img == 1) image = '<img src="img/Cargar.gif" width="20" height="20">';
+      var alert = '<div class="alert alert-' + tipo + ' alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong> ' + image + ' ' + message + '</strong> </div>';
+      return alert;
+    }
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    //axios.post('logout', { _token: this.token });
+    console.log('Component mounted Login.vue.');
   }
 });
 
@@ -35158,7 +35184,8 @@ var render = function() {
                         id: "login-username",
                         type: "text",
                         name: "username",
-                        placeholder: "username or email"
+                        placeholder: "username or email",
+                        required: ""
                       },
                       domProps: { value: _vm.usuario },
                       on: {
@@ -35196,7 +35223,8 @@ var render = function() {
                         id: "login-password",
                         type: "password",
                         name: "password",
-                        placeholder: "password"
+                        placeholder: "password",
+                        required: ""
                       },
                       domProps: { value: _vm.password },
                       on: {
@@ -35275,11 +35303,11 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                            Olvido su contraseña? \n                        "
+                          "\n                            Olvido su contraseña? \n                            "
                         ),
                         _c("router-link", { attrs: { to: "/PasswordReset" } }, [
                           _vm._v(
-                            "\n                            Click aqui\n                        "
+                            "\n                                Click aqui\n                            "
                           )
                         ])
                       ],
@@ -35390,218 +35418,170 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass: "mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2",
+      staticStyle: { "margin-top": "50px" },
+      attrs: { id: "loginbox" }
+    },
+    [
+      _c("div", { staticClass: "panel panel-info" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "panel-body", staticStyle: { "padding-top": "30px" } },
+          [
+            _c("div", {
+              staticClass: "alert alert-danger col-sm-12",
+              staticStyle: { display: "none" },
+              attrs: { id: "login-alert" }
+            }),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                staticClass: "form-horizontal",
+                attrs: { id: "passwordResetForm", role: "form" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.restablecerContrasena()
+                  }
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "input-group",
+                    staticStyle: { "margin-bottom": "25px" }
+                  },
+                  [
+                    _c("span", { staticClass: "input-group-addon" }, [
+                      _vm._v("@")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "passwordReset-email",
+                        type: "text",
+                        name: "email",
+                        placeholder: "Ingrese su correo"
+                      },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "col-md-12 control" }, [
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          "border-top": "1px solid#888",
+                          "padding-top": "15px",
+                          "font-size": "85%"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Ya tienes una cuenta? \n                            "
+                        ),
+                        _c("router-link", { attrs: { to: "/" } }, [
+                          _vm._v(
+                            "\n                                Iniciar session\n                            "
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c("div", { staticClass: "panel-title" }, [
+        _vm._v("Restablecer la contraseña")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "div-alerts-login" } }, [
+      _c("div", { staticClass: "alert alert-info alert-dismissible hidden" }, [
+        _c(
+          "a",
+          {
+            staticClass: "close",
+            attrs: { href: "#", "data-dismiss": "alert", "aria-label": "close" }
+          },
+          [_vm._v("×")]
+        ),
+        _vm._v(" "),
+        _c("strong", [
+          _c("img", {
+            attrs: { src: "img/Cargar.gif", width: "20", height: "20" }
+          }),
+          _vm._v(" Ingresando")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass:
-          "mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2",
-        staticStyle: { "margin-top": "50px" },
-        attrs: { id: "loginbox" }
-      },
+      { staticClass: "form-group", staticStyle: { "margin-top": "10px" } },
       [
-        _c("div", { staticClass: "panel panel-info" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _c("div", { staticClass: "panel-title" }, [
-              _vm._v("Restablecer la contraseña")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticStyle: {
-                  float: "right",
-                  "font-size": "80%",
-                  position: "relative",
-                  top: "-10px"
-                }
-              },
-              [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("Olvido su contraseña?")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "div-alerts-login" } }, [
-            _c(
-              "div",
-              { staticClass: "alert alert-info alert-dismissible hidden" },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      href: "#",
-                      "data-dismiss": "alert",
-                      "aria-label": "close"
-                    }
-                  },
-                  [_vm._v("×")]
-                ),
-                _vm._v(" "),
-                _c("strong", [
-                  _c("img", {
-                    attrs: { src: "img/Cargar.gif", width: "20", height: "20" }
-                  }),
-                  _vm._v(" Ingresando")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
+        _c("div", { staticClass: "col-sm-12 controls" }, [
           _c(
-            "div",
+            "button",
             {
-              staticClass: "panel-body",
-              staticStyle: { "padding-top": "30px" }
+              staticClass: "btn btn-primary",
+              attrs: { type: "submit", id: "btn-login" }
             },
             [
-              _c("div", {
-                staticClass: "alert alert-danger col-sm-12",
-                staticStyle: { display: "none" },
-                attrs: { id: "login-alert" }
-              }),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticClass: "form-horizontal",
-                  attrs: { id: "loginform", role: "form" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group",
-                      staticStyle: { "margin-bottom": "25px" }
-                    },
-                    [
-                      _c("span", { staticClass: "input-group-addon" }, [
-                        _c("i", { staticClass: "glyphicon glyphicon-user" })
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "login-username",
-                          type: "text",
-                          name: "username",
-                          value: "",
-                          placeholder: "username or email"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group",
-                      staticStyle: { "margin-bottom": "25px" }
-                    },
-                    [
-                      _c("span", { staticClass: "input-group-addon" }, [
-                        _c("i", { staticClass: "glyphicon glyphicon-lock" })
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "login-password",
-                          type: "password",
-                          name: "password",
-                          placeholder: "password"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group" }, [
-                    _c("div", { staticClass: "checkbox" }, [
-                      _c("label", [
-                        _c("input", {
-                          attrs: {
-                            id: "login-remember",
-                            type: "checkbox",
-                            name: "remember",
-                            value: "1"
-                          }
-                        }),
-                        _vm._v(" Recordarme\n                        ")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "form-group",
-                      staticStyle: { "margin-top": "10px" }
-                    },
-                    [
-                      _c("div", { staticClass: "col-sm-12 controls" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { type: "button", id: "btn-login" }
-                          },
-                          [
-                            _c("span", {
-                              staticClass: "glyphicon glyphicon-user"
-                            }),
-                            _vm._v(" INGRESAR ")
-                          ]
-                        )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-md-12 control" }, [
-                      _c(
-                        "div",
-                        {
-                          staticStyle: {
-                            "border-top": "1px solid#888",
-                            "padding-top": "15px",
-                            "font-size": "85%"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Don't have an account! \n                        "
-                          ),
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                href: "#",
-                                onClick:
-                                  "$('#loginbox').hide(); $('#signupbox').show()"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                            Registrarme\n                        "
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              )
+              _c("span", { staticClass: "glyphicon glyphicon-user" }),
+              _vm._v(" RESTABLECER CONTRASEÑA ")
             ]
           )
         ])

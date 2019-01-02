@@ -23,12 +23,12 @@
                             
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" v-model="usuario" placeholder="username or email">                                        
+                        <input id="login-username" type="text" class="form-control" name="username" v-model="usuario" placeholder="username or email" required>                                        
                     </div>
                         
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" v-model="password" placeholder="password">
+                        <input id="login-password" type="password" class="form-control" name="password" v-model="password" placeholder="password" required>
                     </div>
                             
 
@@ -55,9 +55,9 @@
                         <div class="col-md-12 control">
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                 Olvido su contraseña? 
-                            <router-link to="/PasswordReset">
-                                Click aqui
-                            </router-link>
+                                <router-link to="/PasswordReset">
+                                    Click aqui
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -71,6 +71,7 @@
     </div>
 </template>
 
+
 <script>
     export default {
         //el: '#loginbox',
@@ -80,30 +81,38 @@
                 usuario : '',
                 password: '',
                 remember: false,
-
-                div_alert : document.getElementById('div-alerts-login'),
             })
         },
         methods: {
             iniciarSesion: function(){
                 axios.interceptors.request.use((config) => {
-                    //console.log(this.divs_alerts('info', '* Comprobando credenciales', 0));
                     document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('info', '* Comprobando credenciales', 0);
                     return config;
                 });
 
                 axios.post('login', {
                     _token   : this.token,
-                    email    : this.usuario,
+                    usuario  : this.usuario,
                     password : this.password,
                     remember : this.remember,
-                }, {
-                    before: (xhr) => { 
-                        divs_alerts();
+                })
+                .then( data => {
+                    console.log('success', data);
+
+                    if( data.data.success == 1 )
+                    {
+                        document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('success', ' Ingresando', 1);
+                        location.href = '/home';
+                    }
+                    else{
+                        document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* '+ data.data.msgerror +'', 0);
                     }
                 })
-                .then( data => console.log('success', data) )
-                .catch( error => console.log('error', error) )
+                .catch( error => { 
+                    console.log('error', error);
+
+                    document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* Error desconocido al intentar iniciar session.', 0);
+                })
             },
             divs_alerts: function( tipo, message, img ){
                 let image = '';
