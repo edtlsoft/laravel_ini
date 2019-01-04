@@ -23,12 +23,12 @@
                             
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" v-model="usuario" placeholder="username or email" required>                                        
+                        <input id="login-username" type="text" class="form-control" v-model="usuario" placeholder="username or email" required>                                        
                     </div>
                         
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" v-model="password" placeholder="password" required>
+                        <input id="login-password" type="password" class="form-control" v-model="password" placeholder="password" required>
                     </div>
                             
 
@@ -75,13 +75,13 @@
 <script>
     export default {
         //el: '#loginbox',
-        data() {
+        data: function(){
             return({
                 token   : document.getElementsByName('_token')[0].value,
                 usuario : '',
                 password: '',
                 remember: false,
-            })
+            })  
         },
         methods: {
             iniciarSesion: function(){
@@ -97,12 +97,12 @@
                     remember : this.remember,
                 })
                 .then( data => {
-                    console.log('success', data);
+                    console.log('success:', data.data);
 
                     if( data.data.success == 1 )
                     {
                         document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('success', ' Ingresando', 1);
-                        location.href = '/home';
+                        location.href = '/';
                     }
                     else{
                         document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* '+ data.data.msgerror +'', 0);
@@ -122,7 +122,7 @@
                 return alert;
             }
         },
-        mounted() {
+        mounted: function(){
             //axios.post('logout', { _token: this.token });
             console.log('Component mounted Login.vue.')
         }

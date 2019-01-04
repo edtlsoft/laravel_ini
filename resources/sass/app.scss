@@ -2,23 +2,38 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+
 // Variables
 @import 'variables';
 
+
+// Fonts Fontawesome
+$fa-font-path: "../webfonts";
+
+
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap'; V4
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+// Admin LTE
+@import '~admin-lte/dist/css/AdminLTE.css';
+@import '~admin-lte/dist/css/skins/_all-skins.css';
 
 
 // Fontawesome
-$fa-font-path: "../webfonts";
-
-@import "/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "/@fortawesome/fontawesome-free/scss/brands.scss";
-
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
 
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+
+.main-header .sidebar-toggle {
+  height: 50px !important;
+  font-family: "Font Awesome 5 Free" !important;
 }
+
+
+
