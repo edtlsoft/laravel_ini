@@ -28,17 +28,9 @@
     <div class="col-xs-10 col-xs-offset-1">
         <router-view></router-view>
     </div>
-        
-
-    <router-link to="/">Login</router-link>
-    <router-link to="/PasswordReset">PasswordReset</router-link>
-
-
 
 </div>
 
-
-    
 
 
 <!-- Scripts -->

@@ -8,7 +8,7 @@
         <img src="images/admin-lte/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>{{ Auth::user()->empleado->nombreCorto() }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
     </div>
@@ -27,14 +27,28 @@
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">NAVEGACIÓN PRINCIPAL</li>
         <li class="active">
-            <a href="#"><i class="fa fa-folder"></i> <span>Dashboard</span></a>
+            <a href="#"><i class="fa fa-tachometer-alt"></i> <span>Dashboard</span></a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>Referencia</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/UI/general.html"><i class="far fa-circle"></i> Registrar</a></li>
+            <li><a href="pages/UI/icons.html"><i class="far fa-circle"></i> Panel de Referencias</a></li>
+            <li><a href="pages/UI/buttons.html"><i class="far fa-circle"></i> Reporte de Referencias</a></li>
+          </ul>
         </li>
         <li>
             <a href="#"><i class="fa fa-folder"></i> <span>Referencia</span></a>
         </li>
         <li class="treeview">
         <a href="#" style="display: none">
-            <i class="fa fa-folder"></i> <span>Referencia</span>
+            <i class="fa fa-folder"></i> <span>Contrarreferencia</span>
             <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
             </span>

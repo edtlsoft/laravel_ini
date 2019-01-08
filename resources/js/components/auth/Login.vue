@@ -4,7 +4,7 @@
         <div class="panel panel-info" >
                 
             <div class="panel-heading">
-                <div class="panel-title">Iniciar Session</div>
+                <div class="panel-title">Iniciar Sesión</div>
             </div>
 
             <div id="div-alerts-login">
@@ -86,7 +86,17 @@
         methods: {
             iniciarSesion: function(){
                 axios.interceptors.request.use((config) => {
-                    document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('info', '* Comprobando credenciales', 0);
+                    //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('info', '* Comprobando credenciales', 0);
+                    Swal({
+                        title: 'Comprobando credenciales',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        timer: 20000,
+                        onOpen: () => {
+                            Swal.showLoading();
+                        }
+                    })
+                    
                     return config;
                 });
 
@@ -101,17 +111,35 @@
 
                     if( data.data.success == 1 )
                     {
-                        document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('success', ' Ingresando', 1);
+                        //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('success', ' Ingresando', 1);
+                        Swal({ 
+                            title: 'Ingresando',
+                            type: 'success',
+                            //timer: 2000,
+                            showConfirmButton: false
+                        });
                         location.href = '/';
                     }
                     else{
-                        document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* '+ data.data.msgerror +'', 0);
+                        //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* '+ data.data.msgerror +'', 0);
+                        Swal({ 
+                            title: data.data.msgerror,
+                            type: 'error',
+                            //timer: 2000,
+                            //showConfirmButton: false
+                        });
                     }
                 })
                 .catch( error => { 
                     console.log('error', error);
 
-                    document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* Error desconocido al intentar iniciar session.', 0);
+                    //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* Error desconocido al intentar iniciar session.', 0);
+                    Swal({ 
+                        title: 'Error desconocido al intentar iniciar session',
+                        type: 'error',
+                        //timer: 2000,
+                        //showConfirmButton: false
+                    });
                 })
             },
             divs_alerts: function( tipo, message, img ){
