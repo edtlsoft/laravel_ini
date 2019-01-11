@@ -22,6 +22,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('fecha_nacimiento', 10);
             $table->string('genero', 1);
             $table->string('cargo', 50);
+            $table->boolean('estado')->default(true);
 
             $table->timestamps();
         });

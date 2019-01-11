@@ -17,7 +17,8 @@ class CreatePermisosTable extends Migration
             $table->increments('id');
 
             $table->string('nombre', 50);
-            $table->string('descripcion');
+            $table->string('descripcion', 250);
+            $table->string('ruta', 100);
             $table->boolean('estado')->default(true);
             
             $table->timestamps();

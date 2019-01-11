@@ -2,9 +2,12 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>HUEM</b></span>
+    <span class="logo-mini"> <img src="images/huem/logoHUEM.png" alt="logo-huem" class="logo-huem" /> </span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>HUEM</b></span>
+    <span class="logo-lg">
+        <img src="images/huem/logoHUEM.png" alt="logo-huem" class="logo-huem" /> 
+        <b>HUEM</b>
+    </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -226,11 +229,11 @@
 
                 <p>
                 {{ Auth::user()->empleado->nombreCorto() }} - {{ Auth::user()->empleado->cargo }}
-                <small>Member since Nov. 2012</small>
+                <small class="hidden">Member since Nov. 2012</small>
                 </p>
             </li>
             <!-- Menu Body -->
-            <li class="user-body">
+            <li class="user-body hidden">
                 <div class="row">
                 <div class="col-xs-4 text-center">
                     <a href="#">Followers</a>
@@ -247,10 +250,10 @@
             <!-- Menu Footer-->
             <li class="user-footer">
                 <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="#" class="btn btn-default btn-flat" v-on:click="logout">Salir</a>
                 </div>
             </li>
             </ul>

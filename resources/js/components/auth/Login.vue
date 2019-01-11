@@ -86,12 +86,7 @@
         methods: {
             iniciarSesion: function(){
                 axios.interceptors.request.use((config) => {
-                    //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('info', '* Comprobando credenciales', 0);
-                    Swal({
-                        title: 'Comprobando credenciales',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        timer: 20000,
+                    Swal({ title: 'Comprobando credenciales', allowEscapeKey: false, allowOutsideClick: false,
                         onOpen: () => {
                             Swal.showLoading();
                         }
@@ -111,48 +106,19 @@
 
                     if( data.data.success == 1 )
                     {
-                        //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('success', ' Ingresando', 1);
-                        Swal({ 
-                            title: 'Ingresando',
-                            type: 'success',
-                            //timer: 2000,
-                            showConfirmButton: false
-                        });
+                        Swal({ title: 'Ingresando', type: 'success', showConfirmButton: false });
                         location.href = '/';
                     }
                     else{
-                        //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* '+ data.data.msgerror +'', 0);
-                        Swal({ 
-                            title: data.data.msgerror,
-                            type: 'error',
-                            //timer: 2000,
-                            //showConfirmButton: false
-                        });
+                        Swal({ title: data.data.msgerror, type: 'error' });
                     }
                 })
                 .catch( error => { 
                     console.log('error', error);
 
-                    //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* Error desconocido al intentar iniciar session.', 0);
-                    Swal({ 
-                        title: 'Error desconocido al intentar iniciar session',
-                        type: 'error',
-                        //timer: 2000,
-                        //showConfirmButton: false
-                    });
+                    Swal({ title: 'Error desconocido al intentar iniciar session.', type: 'error' });
                 })
-            },
-            divs_alerts: function( tipo, message, img ){
-                let image = '';
-                if( img == 1 ) image = '<img src="img/Cargar.gif" width="20" height="20">';
-                let alert = '<div class="alert alert-'+ tipo +' alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong> '+ image +' '+ message +'</strong> </div>';
-
-                return alert;
             }
-        },
-        mounted: function(){
-            //axios.post('logout', { _token: this.token });
-            console.log('Component mounted Login.vue.')
         }
     }
 </script>

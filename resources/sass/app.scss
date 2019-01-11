@@ -29,6 +29,12 @@ $fa-font-path: "../webfonts";
 
 
 
+.logo-huem{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 
 .main-header .sidebar-toggle {
   height: 50px !important;
@@ -36,4 +42,115 @@ $fa-font-path: "../webfonts";
 }
 
 
+.head-menu-group{
+  border: 1px solid #293a4a;
+  background-color: rgba(41,58,74,.95);
+  color: #fff;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-widget {
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+  height: auto;
+  border: 0;
+  margin-bottom: 25px;
+  display: table;
+  width: 100%;
+  max-width: 100%;
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.widget-heading {
+  border: 1px solid #293a4a;
+  background-color: rgba(41,58,74,.95);
+  color: #fbfbfb;
+  text-transform: uppercase;
+  cursor: move;
+}
+
+.panel-body {
+  padding: 15px;
+  overflow: hidden;
+}
+
+.item {
+  float: left;
+  height: 60px;
+  padding: 0;
+  text-align: left;
+}
+
+.icon-file_manager {
+  background-size: 4656px 48px;
+  background-position: -1961px 0;
+  width: 48px;
+  height: 48px;
+}
+
+.img-item-panel {
+  width: 48px;
+  height: 48px;
+}
+
+.itemImageWrapper {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.itemTextWrapper {
+  padding: 10px 0 10px 5px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 200px;
+}
+
+
+
+/**** ESTILOS DEL MENU SUPERIOR ****/
+
+
+.menu-top>li{
+  border-left: 1px solid rgba(255,255,255,.05);
+}
+
+
+
+/**** ESTILOS SORTABLE ****/
+
+.sortable-placeholder
+{
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+  height: 132px;
+  border: 0;
+  margin-bottom: 25px;
+  display: table;
+  width: 100%;
+  max-width: 100%;
+
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+
+  background-color: #fbfbfb;
+}
 

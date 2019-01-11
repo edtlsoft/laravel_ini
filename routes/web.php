@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware('auth');
+Route::get('/', 'DashboardController@index')->name('dashboard');
 
 
 Route::get('/login2', function () {

@@ -8,19 +8,25 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AutenticacionTest extends TestCase
 {
+
+    use RefreshDatabase;
+
     /**
      * A basic test example.
-     *
+     * @test
      * @return void
      */
     public function iniciarSesionTest()
     {
-        $response = $this->post('/login', [
-            '_token'  => '',
+        $this->withoutExceptionHandling();
+
+        $response = $this->postJson('/login', [
+            //'_token'  => '',
             'usuario' => 'edwardlopez.huem@gmail.com',
             'password' => '12345',
             'remember' => false,
         ]);
-        $this->assertTrue(true);
+        //dd($response);
+        $this->assertJson('success');
     }
 }

@@ -27,25 +27,49 @@
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">NAVEGACIÓN PRINCIPAL</li>
         <li class="active">
-            <a href="#"><i class="fa fa-tachometer-alt"></i> <span>Dashboard</span></a>
+            <a href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt blue"></i> <span>Dashboard</span></a>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i>
-            <span>Referencia</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="far fa-circle"></i> Registrar</a></li>
-            <li><a href="pages/UI/icons.html"><i class="far fa-circle"></i> Panel de Referencias</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="far fa-circle"></i> Reporte de Referencias</a></li>
-          </ul>
-        </li>
-        <li>
-            <a href="#"><i class="fa fa-folder"></i> <span>Referencia</span></a>
-        </li>
+
+        @if( Auth::user()->isAuthorized(['referencia_1', 'referencia_2', 'referencia_3', 'referencia_4'], true) )
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>Referencia</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @if( Auth::user()->isAuthorized(['referencia_1'], true) )
+                        <li><a href="pages/UI/general.html"><i class="far fa-circle"></i> Registrar</a></li>
+                    @endif
+                    @if( Auth::user()->isAuthorized(['referencia_2'], true) )
+                        <li><a href="pages/UI/icons.html"><i class="far fa-circle"></i> Panel de Referencias</a></li>
+                    @endif
+                    @if( Auth::user()->isAuthorized(['referencia_4'], true) )
+                        <li><a href="pages/UI/buttons.html"><i class="far fa-circle"></i> Reporte de Referencias</a></li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+
+        @if( Auth::user()->isAuthorized(['contrarreferencia1', 'contrarreferencia2', 'contrarreferencia3', 'contrarreferencia4'], true) )
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-alt"></i>
+                    <span>Contrarreferencia</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/UI/general.html"><i class="far fa-circle"></i> Registrar</a></li>
+                    <li><a href="pages/UI/icons.html"><i class="far fa-circle"></i> Panel de Contrarreferencias</a></li>
+                    <li><a href="pages/UI/buttons.html"><i class="far fa-circle"></i> Reporte de Contrarreferencias</a></li>
+                </ul>
+            </li>
+        @endif
+
         <li class="treeview">
         <a href="#" style="display: none">
             <i class="fa fa-folder"></i> <span>Contrarreferencia</span>
@@ -61,7 +85,7 @@
 
 
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li><a href="#" v-on:click="logout"><i class="fa fa-power-off"></i> <span>Salir</span></a></li>
+        <li><a href="#" v-on:click="logout"><i class="fa fa-power-off red"></i> <span>Salir</span></a></li>
         <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>

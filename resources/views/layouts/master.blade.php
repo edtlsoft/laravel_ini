@@ -9,12 +9,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script>
+        const userNombre = '{{ Auth::user()->empleado->nombreCorto() }}';
+        const userRoutes = <?php echo json_encode(Auth::user()->getRoutesAuthorized()) ?>;
+    </script>  
+
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -26,7 +33,7 @@
     @include('dashboard.menu-top')
 
 
-    @include('dashboard.menu-left')
+    <menu-left></menu-left>
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -35,34 +42,17 @@
         <!-- CSRF -->
         @csrf
         
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-        <h1>
-            Dashboard
-            <small>Control panel</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-        </ol>
-        </section>
+        <router-view></router-view>
 
         
     </div>
 
 
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-        <b>Version</b> 1.1.0
-        </div>
-        <strong>Copyright &copy; 2016-{{ now()->year }} <a href="https://adminlte.io" class="hidden">Almsaeed Studio</a></strong> All rights
-        reserved.
-    </footer>
+    @include('dashboard.footer')
 
 
     <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
+    <aside class="control-sidebar control-sidebar-dark hidden">
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
         <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>

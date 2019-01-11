@@ -1874,12 +1874,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     iniciarSesion: function iniciarSesion() {
       axios.interceptors.request.use(function (config) {
-        //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('info', '* Comprobando credenciales', 0);
         Swal({
           title: 'Comprobando credenciales',
           allowEscapeKey: false,
           allowOutsideClick: false,
-          timer: 20000,
           onOpen: function onOpen() {
             Swal.showLoading();
           }
@@ -1895,44 +1893,26 @@ __webpack_require__.r(__webpack_exports__);
         console.log('success:', data.data);
 
         if (data.data.success == 1) {
-          //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('success', ' Ingresando', 1);
           Swal({
             title: 'Ingresando',
             type: 'success',
-            //timer: 2000,
             showConfirmButton: false
           });
           location.href = '/';
         } else {
-          //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* '+ data.data.msgerror +'', 0);
           Swal({
             title: data.data.msgerror,
-            type: 'error' //timer: 2000,
-            //showConfirmButton: false
-
+            type: 'error'
           });
         }
       }).catch(function (error) {
-        console.log('error', error); //document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* Error desconocido al intentar iniciar session.', 0);
-
+        console.log('error', error);
         Swal({
-          title: 'Error desconocido al intentar iniciar session',
-          type: 'error' //timer: 2000,
-          //showConfirmButton: false
-
+          title: 'Error desconocido al intentar iniciar session.',
+          type: 'error'
         });
       });
-    },
-    divs_alerts: function divs_alerts(tipo, message, img) {
-      var image = '';
-      if (img == 1) image = '<img src="img/Cargar.gif" width="20" height="20">';
-      var alert = '<div class="alert alert-' + tipo + ' alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong> ' + image + ' ' + message + '</strong> </div>';
-      return alert;
     }
-  },
-  mounted: function mounted() {
-    //axios.post('logout', { _token: this.token });
-    console.log('Component mounted Login.vue.');
   }
 });
 
@@ -52502,11 +52482,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // SweetAlert2
 
 
