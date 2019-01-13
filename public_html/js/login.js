@@ -1846,21 +1846,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //el: '#loginbox',
   data: function data() {
@@ -1972,17 +1957,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //el: '#loginbox',
   data: function data() {
@@ -1993,11 +1967,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     restablecerContrasena: function restablecerContrasena() {
-      var _this = this;
-
       axios.interceptors.request.use(function (config) {
-        console.log(_this.div_alert);
-        document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('info', '* Enviando correo', 1);
+        Swal({
+          title: 'Enviando correo para restablecer su contraseña',
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          onOpen: function onOpen() {
+            Swal.showLoading();
+          }
+        });
         return config;
       });
       axios.post('/password/email', {
@@ -2007,21 +1985,24 @@ __webpack_require__.r(__webpack_exports__);
         console.log('success', data);
 
         if (data.data.success == 1) {
-          document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('success', ' Ingresando', 1);
-          location.href = '/home';
+          Swal({
+            type: 'success',
+            title: 'Correo enviado exitosamente',
+            text: 'Revise la bandeja de recibos o de spam de su correo y de click en el enlace para restablecer su contraseña.'
+          });
         } else {
-          document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('danger', '* ' + data.data.msgerror + '', 0);
+          Swal({
+            type: 'error',
+            title: data.data.msgerror
+          });
         }
       }).catch(function (error) {
         console.log('error', error);
-        document.getElementById('div-alerts-login').innerHTML = _this.divs_alerts('danger', '* Error desconocido al intentar enviar el correo.', 0);
+        Swal({
+          type: 'error',
+          title: 'Error desconocido al intentar enviar el correo.'
+        });
       });
-    },
-    divs_alerts: function divs_alerts(tipo, message, img) {
-      var image = '';
-      if (img == 1) image = '<img src="img/Cargar.gif" width="20" height="20">';
-      var alert = '<div class="alert alert-' + tipo + ' alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong> ' + image + ' ' + message + '</strong> </div>';
-      return alert;
     }
   },
   mounted: function mounted() {
@@ -37924,18 +37905,10 @@ var render = function() {
       _c("div", { staticClass: "panel panel-info" }, [
         _vm._m(0),
         _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
         _c(
           "div",
           { staticClass: "panel-body", staticStyle: { "padding-top": "30px" } },
           [
-            _c("div", {
-              staticClass: "alert alert-danger col-sm-12",
-              staticStyle: { display: "none" },
-              attrs: { id: "login-alert" }
-            }),
-            _vm._v(" "),
             _c(
               "form",
               {
@@ -37956,7 +37929,7 @@ var render = function() {
                     staticStyle: { "margin-bottom": "25px" }
                   },
                   [
-                    _vm._m(2),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -37994,7 +37967,7 @@ var render = function() {
                     staticStyle: { "margin-bottom": "25px" }
                   },
                   [
-                    _vm._m(3),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -38074,7 +38047,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("div", { staticClass: "col-md-12 control" }, [
@@ -38116,30 +38089,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
       _c("div", { staticClass: "panel-title" }, [_vm._v("Iniciar Sesión")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "div-alerts-login" } }, [
-      _c("div", { staticClass: "alert alert-info alert-dismissible hidden" }, [
-        _c(
-          "a",
-          {
-            staticClass: "close",
-            attrs: { href: "#", "data-dismiss": "alert", "aria-label": "close" }
-          },
-          [_vm._v("×")]
-        ),
-        _vm._v(" "),
-        _c("strong", [
-          _c("img", {
-            attrs: { src: "img/Cargar.gif", width: "20", height: "20" }
-          }),
-          _vm._v(" Ingresando ")
-        ])
-      ])
     ])
   },
   function() {
@@ -38215,18 +38164,10 @@ var render = function() {
       _c("div", { staticClass: "panel panel-info" }, [
         _vm._m(0),
         _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
         _c(
           "div",
           { staticClass: "panel-body", staticStyle: { "padding-top": "30px" } },
           [
-            _c("div", {
-              staticClass: "alert alert-danger col-sm-12",
-              staticStyle: { display: "none" },
-              attrs: { id: "login-alert" }
-            }),
-            _vm._v(" "),
             _c(
               "form",
               {
@@ -38265,7 +38206,8 @@ var render = function() {
                         id: "passwordReset-email",
                         type: "text",
                         name: "email",
-                        placeholder: "Ingrese su correo"
+                        placeholder: "Ingrese su correo",
+                        required: ""
                       },
                       domProps: { value: _vm.email },
                       on: {
@@ -38280,7 +38222,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("div", { staticClass: "col-md-12 control" }, [
@@ -38323,30 +38265,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "panel-heading" }, [
       _c("div", { staticClass: "panel-title" }, [
         _vm._v("Restablecer la contraseña")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "div-alerts-login" } }, [
-      _c("div", { staticClass: "alert alert-info alert-dismissible hidden" }, [
-        _c(
-          "a",
-          {
-            staticClass: "close",
-            attrs: { href: "#", "data-dismiss": "alert", "aria-label": "close" }
-          },
-          [_vm._v("×")]
-        ),
-        _vm._v(" "),
-        _c("strong", [
-          _c("img", {
-            attrs: { src: "img/Cargar.gif", width: "20", height: "20" }
-          }),
-          _vm._v(" Ingresando")
-        ])
       ])
     ])
   },

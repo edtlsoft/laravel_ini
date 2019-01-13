@@ -73,7 +73,7 @@
 
                     if( data.data.success == 1 )
                     {
-                        Swal({ type: 'success', title: 'Correo enviado exitosamente', text: 'Revise la bandeja de recibos o de spam de su correo y de click en el enlace para restablecer su contraseña' });
+                        Swal({ type: 'success', title: 'Correo enviado exitosamente', text: 'Revise la bandeja de recibos o de spam de su correo y de click en el enlace para restablecer su contraseña.' });
                     }
                     else{
                         Swal({ type: 'error', title: data.data.msgerror});
