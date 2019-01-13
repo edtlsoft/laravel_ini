@@ -22,4 +22,4 @@ Route::get('/login2', function () {
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('{path}', 'DashboardController@index')->where('path', '([A-z\d-\/_\.]+)?');

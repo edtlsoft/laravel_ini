@@ -1866,6 +1866,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EventBus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../EventBus */ "./resources/js/EventBus.js");
 //
 //
 //
@@ -1962,6 +1963,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1969,8 +1976,13 @@ __webpack_require__.r(__webpack_exports__);
       routesAuth: userRoutes
     };
   },
+  methods: {
+    cerraSesion: function cerraSesion() {
+      _EventBus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('cerrar-sesion');
+    }
+  },
   mounted: function mounted() {
-    console.log('Componente Registra-Referencia');
+    console.log('Componente menu-left mounted'); //this.cerraSesion();
   }
 });
 
@@ -1985,6 +1997,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38536,7 +38565,7 @@ var render = function() {
           "li",
           [
             _c("router-link", { attrs: { to: "/" } }, [
-              _c("i", { staticClass: "fa fa-dashboard" }),
+              _c("i", { staticClass: "fa fa-tachometer-alt blue" }),
               _vm._v(" Home")
             ])
           ],
@@ -38578,13 +38607,14 @@ var render = function() {
                                 "router-link",
                                 {
                                   staticClass: "icon-file_manager",
-                                  attrs: { to: "/Referencia/Registrar" }
+                                  attrs: { to: "/referencia/registrar" }
                                 },
                                 [
                                   _c("img", {
                                     staticClass: "img-item-panel",
                                     attrs: {
-                                      src: __webpack_require__(/*! ../../../images/dashboard/icon_referencia.png */ "./resources/images/dashboard/icon_referencia.png")
+                                      src: __webpack_require__(/*! ../../../images/dashboard/icon_referencia_registrar.png */ "./resources/images/dashboard/icon_referencia_registrar.png"),
+                                      alt: "icon-referencia-registrar"
                                     }
                                   })
                                 ]
@@ -38594,7 +38624,7 @@ var render = function() {
                                 "router-link",
                                 {
                                   staticClass: "itemTextWrapper",
-                                  attrs: { to: "/Referencia/Registrar" }
+                                  attrs: { to: "/referencia/registrar" }
                                 },
                                 [_vm._v(" REGISTRAR REFERENCIA ")]
                               )
@@ -38762,320 +38792,329 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("aside", { staticClass: "main-sidebar" }, [
-    _c("section", { staticClass: "sidebar" }, [
-      _c("div", { staticClass: "user-panel" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "pull-left info" },
-          [
-            _c("p", [_vm._v(" " + _vm._s(_vm.nombreUsuario) + " ")]),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: "/" } }, [
-              _c("i", { staticClass: "fa fa-circle text-success" }),
-              _vm._v(" Online")
-            ])
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "sidebar-menu", attrs: { "data-widget": "tree" } },
-        [
-          _c("li", { staticClass: "header" }, [_vm._v("NAVEGACIÓN PRINCIPAL")]),
+  return _c("div", [
+    _c("aside", { staticClass: "main-sidebar" }, [
+      _c("section", { staticClass: "sidebar" }, [
+        _c("div", { staticClass: "user-panel" }, [
+          _vm._m(0),
           _vm._v(" "),
           _c(
-            "li",
-            { staticClass: "active" },
+            "div",
+            { staticClass: "pull-left info" },
             [
+              _c("p", [_vm._v(" " + _vm._s(_vm.nombreUsuario) + " ")]),
+              _vm._v(" "),
               _c("router-link", { attrs: { to: "/" } }, [
-                _c("i", { staticClass: "fa fa-tachometer-alt blue" }),
-                _vm._v(" "),
-                _c("span", [_vm._v("Dashboard")])
+                _c("i", { staticClass: "fa fa-circle text-success" }),
+                _vm._v(" Online")
               ])
             ],
             1
-          ),
-          _vm._v(" "),
-          _vm.routesAuth.some(function(data) {
-            return [
-              "all",
-              "referencia.create",
-              "referencia_2",
-              "referencia_3",
-              "referencia_4"
-            ].includes(data)
-          })
-            ? _c(
-                "li",
-                { staticClass: "treeview" },
-                [
-                  _c("router-link", { attrs: { to: "/" } }, [
-                    _c("i", { staticClass: "fa fa-folder" }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("Referencia")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "pull-right-container" }, [
-                      _c("i", { staticClass: "fa fa-angle-left pull-right" })
-                    ])
-                  ]),
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "sidebar-menu", attrs: { "data-widget": "tree" } },
+          [
+            _c("li", { staticClass: "header" }, [
+              _vm._v("NAVEGACIÓN PRINCIPAL")
+            ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { attrs: { tag: "li", to: "/", "exact-active-class": "active" } },
+              [
+                _c("a", [
+                  _c("i", { staticClass: "fa fa-tachometer-alt blue" }),
                   _vm._v(" "),
-                  _c("ul", { staticClass: "treeview-menu" }, [
-                    _vm.routesAuth.some(function(data) {
-                      return ["all", "referencia.create"].includes(data)
-                    })
-                      ? _c(
-                          "li",
-                          [
-                            _c(
-                              "router-link",
-                              { attrs: { to: "/Referencia/Registrar" } },
-                              [
+                  _c("span", [_vm._v("Dashboard")])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _vm.routesAuth.some(function(data) {
+              return [
+                "all",
+                "referencia.create",
+                "referencia_2",
+                "referencia_3",
+                "referencia_4"
+              ].includes(data)
+            })
+              ? _c("li", { staticClass: "treeview" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "treeview-menu" },
+                    [
+                      _vm.routesAuth.some(function(data) {
+                        return ["all", "referencia.create"].includes(data)
+                      })
+                        ? _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                tag: "li",
+                                to: "/referencia/registrar",
+                                "exact-active-class": "active"
+                              }
+                            },
+                            [
+                              _c("a", [
                                 _c("i", { staticClass: "far fa-circle" }),
                                 _vm._v(" Registrar")
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.routesAuth.some(function(data) {
-                      return ["all", "referencia.create"].includes(data)
-                    })
-                      ? _c(
-                          "li",
-                          [
-                            _c(
-                              "router-link",
-                              { attrs: { to: "/Referencia/Registrar" } },
-                              [
+                              ])
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.routesAuth.some(function(data) {
+                        return ["all", "referencia.index"].includes(data)
+                      })
+                        ? _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                tag: "li",
+                                to: "/referencia",
+                                "exact-active-class": "active"
+                              }
+                            },
+                            [
+                              _c("a", [
                                 _c("i", { staticClass: "far fa-circle" }),
                                 _vm._v(" Panel de Referencias")
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.routesAuth.some(function(data) {
-                      return ["all", "referencia.create"].includes(data)
-                    })
-                      ? _c(
-                          "li",
-                          [
-                            _c(
-                              "router-link",
-                              { attrs: { to: "/Referencia/Registrar" } },
-                              [
+                              ])
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.routesAuth.some(function(data) {
+                        return ["all", "referencia.reporte"].includes(data)
+                      })
+                        ? _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                tag: "li",
+                                to: "/referencia/reporte",
+                                "exact-active-class": "active"
+                              }
+                            },
+                            [
+                              _c("a", [
                                 _c("i", { staticClass: "far fa-circle" }),
                                 _vm._v(" Reporte de Referencias")
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  ])
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.routesAuth.some(function(data) {
-            return [
-              "all",
-              "referencia.create",
-              "referencia_2",
-              "referencia_3",
-              "referencia_4"
-            ].includes(data)
-          })
-            ? _c(
-                "li",
-                { staticClass: "treeview" },
-                [
-                  _c("router-link", { attrs: { to: "/" } }, [
-                    _c("i", { staticClass: "fa fa-file-alt" }),
+                              ])
+                            ]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.routesAuth.some(function(data) {
+              return [
+                "all",
+                "referencia.create",
+                "referencia_2",
+                "referencia_3",
+                "referencia_4"
+              ].includes(data)
+            })
+              ? _c(
+                  "li",
+                  { staticClass: "treeview" },
+                  [
+                    _c("router-link", { attrs: { to: "/" } }, [
+                      _c("i", { staticClass: "fa fa-file-alt" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Contrarreferencia")]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "pull-right-container" }, [
+                        _c("i", { staticClass: "fa fa-angle-left pull-right" })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("ul", { staticClass: "treeview-menu" }, [
+                      _c(
+                        "li",
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: "/Referencia/Registrar" } },
+                            [
+                              _c("i", { staticClass: "far fa-circle" }),
+                              _vm._v(" Registrar")
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: "/Referencia/Registrar" } },
+                            [
+                              _c("i", { staticClass: "far fa-circle" }),
+                              _vm._v(" Panel de Contrarreferencias")
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: "/Referencia/Registrar" } },
+                            [
+                              _c("i", { staticClass: "far fa-circle" }),
+                              _vm._v(" Reporte de Contrarreferencias")
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "treeview" },
+              [
+                _c(
+                  "router-link",
+                  { staticStyle: { display: "none" }, attrs: { to: "/" } },
+                  [
+                    _c("i", { staticClass: "fa fa-folder" }),
                     _vm._v(" "),
                     _c("span", [_vm._v("Contrarreferencia")]),
                     _vm._v(" "),
                     _c("span", { staticClass: "pull-right-container" }, [
                       _c("i", { staticClass: "fa fa-angle-left pull-right" })
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "treeview-menu" }, [
-                    _c(
-                      "li",
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: "/Referencia/Registrar" } },
-                          [
-                            _c("i", { staticClass: "far fa-circle" }),
-                            _vm._v(" Registrar")
-                          ]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: "/Referencia/Registrar" } },
-                          [
-                            _c("i", { staticClass: "far fa-circle" }),
-                            _vm._v(" Panel de Contrarreferencias")
-                          ]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: "/Referencia/Registrar" } },
-                          [
-                            _c("i", { staticClass: "far fa-circle" }),
-                            _vm._v(" Reporte de Contrarreferencias")
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "treeview" },
-            [
-              _c(
-                "router-link",
-                { staticStyle: { display: "none" }, attrs: { to: "/" } },
-                [
-                  _c("i", { staticClass: "fa fa-folder" }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Contrarreferencia")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "pull-right-container" }, [
-                    _c("i", { staticClass: "fa fa-angle-left pull-right" })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("ul", { staticClass: "treeview-menu" }, [
-                _c(
-                  "li",
-                  { staticClass: "active" },
-                  [
-                    _c("router-link", { attrs: { to: "/" } }, [
-                      _c("i", { staticClass: "fa fa-edit" }),
-                      _vm._v("Registrar Referencia")
-                    ])
-                  ],
-                  1
+                  ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c("router-link", { attrs: { to: "/" } }, [
-                      _c("i", { staticClass: "far fa-list-alt" }),
-                      _vm._v("Panel de Referencia")
-                    ])
-                  ],
-                  1
-                )
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c("router-link", { attrs: { to: "/" } }, [
-                _c("i", { staticClass: "fa fa-book" }),
-                _vm._v(" "),
-                _c("span", [_vm._v("Documentation")])
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/" }, on: { click: _vm.logout } },
-                [
-                  _c("i", { staticClass: "fa fa-power-off red" }),
+                _c("ul", { staticClass: "treeview-menu" }, [
+                  _c(
+                    "li",
+                    { staticClass: "active" },
+                    [
+                      _c("router-link", { attrs: { to: "/" } }, [
+                        _c("i", { staticClass: "fa fa-edit" }),
+                        _vm._v("Registrar Referencia")
+                      ])
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
-                  _c("span", [_vm._v("Salir")])
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("li", { staticClass: "header" }, [_vm._v("LABELS")]),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c("router-link", { attrs: { to: "/" } }, [
-                _c("i", { staticClass: "fa fa-circle-o text-red" }),
-                _vm._v(" "),
-                _c("span", [_vm._v("Important")])
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c("router-link", { attrs: { to: "/" } }, [
-                _c("i", { staticClass: "fa fa-circle-o text-yellow" }),
-                _vm._v(" "),
-                _c("span", [_vm._v("Warning")])
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c("router-link", { attrs: { to: "/" } }, [
-                _c("i", { staticClass: "fa fa-circle-o text-aqua" }),
-                _vm._v(" "),
-                _c("span", [_vm._v("Information")])
-              ])
-            ],
-            1
-          )
-        ]
-      )
+                  _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { to: "/" } }, [
+                        _c("i", { staticClass: "far fa-list-alt" }),
+                        _vm._v("Panel de Referencia")
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: "/" } }, [
+                  _c("i", { staticClass: "fa fa-book" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Documentation")])
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: { to: "/" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.cerraSesion($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-power-off red" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Salir")])
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("li", { staticClass: "header" }, [_vm._v("LABELS")]),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: "/" } }, [
+                  _c("i", { staticClass: "fa fa-circle-o text-red" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Important")])
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: "/" } }, [
+                  _c("i", { staticClass: "fa fa-circle-o text-yellow" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Warning")])
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: "/" } }, [
+                  _c("i", { staticClass: "fa fa-circle-o text-aqua" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Information")])
+                ])
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ])
     ])
   ])
 }
@@ -39121,6 +39160,20 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", [
+      _c("i", { staticClass: "fa fa-folder" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Referencia")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "pull-right-container" }, [
+        _c("i", { staticClass: "fa fa-angle-left pull-right" })
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -39144,14 +39197,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("section", { staticClass: "content-header section-header" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("ol", { staticClass: "breadcrumb" }, [
+        _c(
+          "li",
+          [
+            _c("router-link", { attrs: { to: "/" } }, [
+              _c("i", { staticClass: "fa fa-tachometer-alt blue" }),
+              _vm._v(" Referencia")
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "active" }, [_vm._v("Registrar")])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("Referencia - Registrar")])])
+    return _c("h1", [
+      _vm._v("\n            Referencia\n            "),
+      _c("small", [_vm._v("Registrar")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-12" })
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -41907,8 +41994,8 @@ if (inBrowser && window.Vue) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.5.21
- * (c) 2014-2018 Evan You
+ * Vue.js v2.5.22
+ * (c) 2014-2019 Evan You
  * Released under the MIT License.
  */
 
@@ -42537,7 +42624,7 @@ if (true) {
       ? vm.options
       : vm._isVue
         ? vm.$options || vm.constructor.options
-        : vm || {};
+        : vm;
     var name = options.name || options._componentTag;
     var file = options.__file;
     if (!name && file) {
@@ -42632,9 +42719,9 @@ Dep.prototype.notify = function notify () {
   }
 };
 
-// the current target watcher being evaluated.
-// this is globally unique because there could be only one
-// watcher being evaluated at any time.
+// The current target watcher being evaluated.
+// This is globally unique because only one watcher
+// can be evaluated at a time.
 Dep.target = null;
 var targetStack = [];
 
@@ -43162,13 +43249,26 @@ function mergeHook (
   parentVal,
   childVal
 ) {
-  return childVal
+  var res = childVal
     ? parentVal
       ? parentVal.concat(childVal)
       : Array.isArray(childVal)
         ? childVal
         : [childVal]
-    : parentVal
+    : parentVal;
+  return res
+    ? dedupeHooks(res)
+    : res
+}
+
+function dedupeHooks (hooks) {
+  var res = [];
+  for (var i = 0; i < hooks.length; i++) {
+    if (res.indexOf(hooks[i]) === -1) {
+      res.push(hooks[i]);
+    }
+  }
+  return res
 }
 
 LIFECYCLE_HOOKS.forEach(function (hook) {
@@ -43404,7 +43504,7 @@ function mergeOptions (
   normalizeProps(child, vm);
   normalizeInject(child, vm);
   normalizeDirectives(child);
-  
+
   // Apply extends and mixins on the child options,
   // but only if it is a raw options object that isn't
   // the result of another mergeOptions call.
@@ -44337,6 +44437,8 @@ function resolveAsyncComponent (
       // (async resolves are shimmed as synchronous during SSR)
       if (!sync) {
         forceRender(true);
+      } else {
+        contexts.length = 0;
       }
     });
 
@@ -44504,8 +44606,8 @@ function eventsMixin (Vue) {
     }
     // array of events
     if (Array.isArray(event)) {
-      for (var i = 0, l = event.length; i < l; i++) {
-        vm.$off(event[i], fn);
+      for (var i$1 = 0, l = event.length; i$1 < l; i$1++) {
+        vm.$off(event[i$1], fn);
       }
       return vm
     }
@@ -44518,16 +44620,14 @@ function eventsMixin (Vue) {
       vm._events[event] = null;
       return vm
     }
-    if (fn) {
-      // specific handler
-      var cb;
-      var i$1 = cbs.length;
-      while (i$1--) {
-        cb = cbs[i$1];
-        if (cb === fn || cb.fn === fn) {
-          cbs.splice(i$1, 1);
-          break
-        }
+    // specific handler
+    var cb;
+    var i = cbs.length;
+    while (i--) {
+      cb = cbs[i];
+      if (cb === fn || cb.fn === fn) {
+        cbs.splice(i, 1);
+        break
       }
     }
     return vm
@@ -46688,34 +46788,14 @@ function resolveConstructorOptions (Ctor) {
 function resolveModifiedOptions (Ctor) {
   var modified;
   var latest = Ctor.options;
-  var extended = Ctor.extendOptions;
   var sealed = Ctor.sealedOptions;
   for (var key in latest) {
     if (latest[key] !== sealed[key]) {
       if (!modified) { modified = {}; }
-      modified[key] = dedupe(latest[key], extended[key], sealed[key]);
+      modified[key] = latest[key];
     }
   }
   return modified
-}
-
-function dedupe (latest, extended, sealed) {
-  // compare latest and sealed to ensure lifecycle hooks won't be duplicated
-  // between merges
-  if (Array.isArray(latest)) {
-    var res = [];
-    sealed = Array.isArray(sealed) ? sealed : [sealed];
-    extended = Array.isArray(extended) ? extended : [extended];
-    for (var i = 0; i < latest.length; i++) {
-      // push original options and not sealed options to exclude duplicated options
-      if (extended.indexOf(latest[i]) >= 0 || sealed.indexOf(latest[i]) < 0) {
-        res.push(latest[i]);
-      }
-    }
-    return res
-  } else {
-    return latest
-  }
 }
 
 function Vue (options) {
@@ -47086,7 +47166,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.5.21';
+Vue.version = '2.5.22';
 
 /*  */
 
@@ -53075,6 +53155,32 @@ module.exports = "/images/icon_referencia.png?3409f60ea0c12a215abd2d971e5f6dc7";
 
 /***/ }),
 
+/***/ "./resources/images/dashboard/icon_referencia_registrar.png":
+/*!******************************************************************!*\
+  !*** ./resources/images/dashboard/icon_referencia_registrar.png ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/icon_referencia_registrar.png?660df2a0e7e14cf232133b199588aefa";
+
+/***/ }),
+
+/***/ "./resources/js/EventBus.js":
+/*!**********************************!*\
+  !*** ./resources/js/EventBus.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+var EventBus = new Vue();
+/* harmony default export */ __webpack_exports__["default"] = (EventBus);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -53085,6 +53191,7 @@ module.exports = "/images/icon_referencia.png?3409f60ea0c12a215abd2d971e5f6dc7";
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _EventBus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EventBus */ "./resources/js/EventBus.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // SweetAlert2
 
 
@@ -53097,18 +53204,28 @@ var routes = [{
   path: '/',
   component: __webpack_require__(/*! ./components/dashboard/Dashboard.vue */ "./resources/js/components/dashboard/Dashboard.vue").default
 }, {
-  path: '/Referencia/registrar',
+  path: '/referencia/registrar',
   component: __webpack_require__(/*! ./components/referencia/Registrar.vue */ "./resources/js/components/referencia/Registrar.vue").default
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  mode: 'history',
   routes: routes
 });
-Vue.component('menu-left', __webpack_require__(/*! ./components/dashboard/MenuLeft.vue */ "./resources/js/components/dashboard/MenuLeft.vue"));
+Vue.component('menu-left', __webpack_require__(/*! ./components/dashboard/MenuLeft.vue */ "./resources/js/components/dashboard/MenuLeft.vue").default); // EventBus
+
+
 var app = new Vue({
   el: '#app',
   router: router,
   data: {
     token: document.getElementsByName('_token')[0].value
+  },
+  created: function created() {
+    var _this = this;
+
+    _EventBus__WEBPACK_IMPORTED_MODULE_1__["default"].$on('cerrar-sesion', function () {
+      _this.logout();
+    });
   },
   methods: {
     logout: function logout() {
@@ -53455,8 +53572,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\laravel\laravel_ini\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\laravel\laravel_ini\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\xampp\htdocs\Laravel\laravel_ini\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\xampp\htdocs\Laravel\laravel_ini\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

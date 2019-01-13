@@ -7,7 +7,7 @@
                 <small>Control panel</small>
             </h1>
             <ol class="breadcrumb">
-                <li><router-link to="/"><i class="fa fa-dashboard"></i> Home</router-link></li>
+                <li><router-link to="/"><i class="fa fa-tachometer-alt blue"></i> Home</router-link></li>
                 <li class="active">Dashboard</li>
             </ol>
         </section>
@@ -25,8 +25,8 @@
                             <div class="icon-container-body">
 
                                 <div class="item" v-if="(routesAuth.some(data => { return ['all', 'referencia.create'].includes(data) }))">
-                                    <router-link class="icon-file_manager" to="/Referencia/Registrar"> <img src="../../../images/dashboard/icon_referencia.png" class="img-item-panel"> </router-link>
-                                    <router-link class="itemTextWrapper" to="/Referencia/Registrar"> REGISTRAR REFERENCIA </router-link>
+                                    <router-link class="icon-file_manager" to="/referencia/registrar"> <img src="../../../images/dashboard/icon_referencia_registrar.png" alt="icon-referencia-registrar" class="img-item-panel"> </router-link>
+                                    <router-link class="itemTextWrapper" to="/referencia/registrar"> REGISTRAR REFERENCIA </router-link>
                                 </div>
 
                                 <div class="item" v-if="(routesAuth.some(data => { return ['all', 'referencia_2'].includes(data) }))">

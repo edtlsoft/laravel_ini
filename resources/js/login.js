@@ -19,9 +19,7 @@ let routes = [
     { path: '/PasswordReset', component: require('./components/auth/PasswordReset.vue').default }
 ]
 
-const router = new VueRouter({
-    routes
-})
+const router = new VueRouter({ routes });
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 

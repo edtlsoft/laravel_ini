@@ -9,6 +9,7 @@ window.Swal = require('sweetalert2');
 // Vue
 window.Vue = require('vue');
 
+
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
@@ -16,14 +17,18 @@ Vue.use(VueRouter);
 
 let routes = [
     { path: '/', component: require('./components/dashboard/Dashboard.vue').default },
-    { path: '/Referencia/registrar', component: require('./components/referencia/Registrar.vue').default }
+    { path: '/referencia/registrar', component: require('./components/referencia/Registrar.vue').default }
 ];
 
 
-const router = new VueRouter({ routes });
+const router = new VueRouter({ mode: 'history', routes });
 
 
-Vue.component('menu-left', require('./components/dashboard/MenuLeft.vue'));
+Vue.component('menu-left', require('./components/dashboard/MenuLeft.vue').default);
+
+
+// EventBus
+import EventBus from './EventBus';
 
 
 const app = new Vue({
@@ -31,6 +36,9 @@ const app = new Vue({
     router,
     data: {
         token   : document.getElementsByName('_token')[0].value,
+    },
+    created: function(){
+        EventBus.$on('cerrar-sesion', () => { this.logout() })
     },
     methods: {
         logout: function(){
@@ -60,6 +68,7 @@ const app = new Vue({
             })
         }
     }
+    
 });
 
 

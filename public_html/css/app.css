@@ -12336,13 +12336,17 @@ readers do not read off random characters that represent icons */
 
 .logo-huem {
   width: 40px;
-  height: 40px;
+  height: 35px;
   border-radius: 50%;
 }
 
 .main-header .sidebar-toggle {
   height: 50px !important;
   font-family: "Font Awesome 5 Free" !important;
+}
+
+li.active > a {
+  background-color: #ff5050 !important;
 }
 
 .head-menu-group {
@@ -12398,7 +12402,7 @@ readers do not read off random characters that represent icons */
 .item {
   float: left;
   height: 60px;
-  padding: 0;
+  padding-right: 20px;
   text-align: left;
 }
 

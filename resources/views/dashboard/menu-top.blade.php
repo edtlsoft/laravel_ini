@@ -2,10 +2,10 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"> <img src="images/huem/logoHUEM.png" alt="logo-huem" class="logo-huem" /> </span>
+    <span class="logo-mini"> <img src="/images/huem/logoHUEM.png" alt="logo-huem" class="logo-huem" /> </span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
-        <img src="images/huem/logoHUEM.png" alt="logo-huem" class="logo-huem" /> 
+        <img src="/images/huem/logoHUEM.png" alt="logo-huem" class="logo-huem" /> 
         <b>HUEM</b>
     </span>
     </a>
@@ -33,7 +33,7 @@
                 <li><!-- start message -->
                     <a href="#">
                     <div class="pull-left">
-                        <img src="images/admin-lte/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="/images/admin-lte/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                         Support Team
@@ -46,7 +46,7 @@
                 <li>
                     <a href="#">
                     <div class="pull-left">
-                        <img src="images/admin-lte/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="/images/admin-lte/user3-128x128.jpg" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                         AdminLTE Design Team
@@ -58,7 +58,7 @@
                 <li>
                     <a href="#">
                     <div class="pull-left">
-                        <img src="images/admin-lte/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="/images/admin-lte/user4-128x128.jpg" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                         Developers
@@ -70,7 +70,7 @@
                 <li>
                     <a href="#">
                     <div class="pull-left">
-                        <img src="images/admin-lte/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="/images/admin-lte/user3-128x128.jpg" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                         Sales Department
@@ -82,7 +82,7 @@
                 <li>
                     <a href="#">
                     <div class="pull-left">
-                        <img src="images/admin-lte/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="/images/admin-lte/user4-128x128.jpg" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                         Reviewers
@@ -219,13 +219,13 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="images/admin-lte/user2-160x160.jpg" class="user-image" alt="User Image">
+            <img src="/images/admin-lte/user2-160x160.jpg" class="user-image" alt="User Image">
             <span class="hidden-xs">{{ Auth::user()->empleado->nombreCorto() }}</span>
             </a>
             <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-                <img src="images/admin-lte/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/images/admin-lte/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                 {{ Auth::user()->empleado->nombreCorto() }} - {{ Auth::user()->empleado->cargo }}

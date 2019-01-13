@@ -6,18 +6,9 @@
             <div class="panel-heading">
                 <div class="panel-title">Iniciar Sesión</div>
             </div>
-
-            <div id="div-alerts-login">
-                <div class="alert alert-info alert-dismissible hidden">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong> <img src="img/Cargar.gif" width="20" height="20"> Ingresando </strong>
-                </div> 
-            </div>
                 
 
-            <div style="padding-top:30px" class="panel-body" >
-
-                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+            <div style="padding-top:30px" class="panel-body">
                     
                 <form id="loginform" class="form-horizontal" role="form" @submit.prevent="iniciarSesion()">
                             
@@ -30,9 +21,7 @@
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input id="login-password" type="password" class="form-control" v-model="password" placeholder="password" required>
                     </div>
-                            
 
-                        
                     <div class="input-group">
                         <div class="checkbox">
                             <label>
@@ -41,10 +30,8 @@
                         </div>
                     </div>
 
-
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
-
                         <div class="col-sm-12 controls">
                             <button type="submit" id="btn-login" class="btn btn-primary"> <span class="glyphicon glyphicon-user"></span> INGRESAR </button>
                         </div>
@@ -62,9 +49,7 @@
                         </div>
                     </div>
 
-                </form>     
-
-
+                </form>
 
             </div>                     
         </div>  

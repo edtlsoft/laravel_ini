@@ -6,24 +6,15 @@
             <div class="panel-heading">
                 <div class="panel-title">Restablecer la contraseña</div>
             </div>
-
-            <div id="div-alerts-login">
-                <div class="alert alert-info alert-dismissible hidden">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong> <img src="img/Cargar.gif" width="20" height="20"> Ingresando</strong>
-                </div> 
-            </div>
                 
 
-            <div style="padding-top:30px" class="panel-body" >
-
-                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+            <div style="padding-top:30px" class="panel-body">
                     
                 <form id="passwordResetForm" class="form-horizontal" role="form" @submit.prevent="restablecerContrasena()">
                             
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon">@</span>
-                        <input id="passwordReset-email" type="text" class="form-control" name="email" v-model="email" placeholder="Ingrese su correo">                                        
+                        <input id="passwordReset-email" type="text" class="form-control" name="email" v-model="email" placeholder="Ingrese su correo" required>
                     </div>
                             
 
@@ -47,8 +38,6 @@
 
                 </form>     
 
-
-
             </div>                     
         </div>  
     </div>
@@ -66,8 +55,12 @@
         methods: {
             restablecerContrasena: function(){
                 axios.interceptors.request.use((config) => {
-                    console.log( this.div_alert );
-                    document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('info', '* Enviando correo', 1);
+                    Swal({ title: 'Enviando correo para restablecer su contraseña', allowEscapeKey: false, allowOutsideClick: false,
+                        onOpen: () => {
+                            Swal.showLoading();
+                        }
+                    })
+
                     return config;
                 });
 
@@ -80,25 +73,16 @@
 
                     if( data.data.success == 1 )
                     {
-                        document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('success', ' Ingresando', 1);
-                        location.href = '/home';
+                        Swal({ type: 'success', title: 'Correo enviado exitosamente', text: 'Revise la bandeja de recibos o de spam de su correo y de click en el enlace para restablecer su contraseña' });
                     }
                     else{
-                        document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* '+ data.data.msgerror +'', 0);
+                        Swal({ type: 'error', title: data.data.msgerror});
                     }
                 })
                 .catch( error => { 
                     console.log('error', error);
-
-                    document.getElementById('div-alerts-login').innerHTML = this.divs_alerts('danger', '* Error desconocido al intentar enviar el correo.', 0);
+                    Swal({ type: 'error', title: 'Error desconocido al intentar enviar el correo.' });
                 })
-            },
-            divs_alerts: function( tipo, message, img ){
-                let image = '';
-                if( img == 1 ) image = '<img src="img/Cargar.gif" width="20" height="20">';
-                let alert = '<div class="alert alert-'+ tipo +' alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong> '+ image +' '+ message +'</strong> </div>';
-
-                return alert;
             }
         },
         mounted() {

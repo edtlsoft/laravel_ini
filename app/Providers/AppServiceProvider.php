@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(250);
+        Schema::defaultStringLength(191);
     }
 
     /**
@@ -24,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        $this->app->bind('path.public', function() {
+            return base_path('public_html');
+        });
+
     }
+
+    
 }
