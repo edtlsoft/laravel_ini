@@ -42,15 +42,15 @@
                     <ul class="treeview-menu">
                         <router-link tag="li" to="/referencia/registrar" exact-active-class="active" 
                             v-if="(routesAuth.some(data => { return ['all', 'referencia.create'].includes(data) }))">
-                            <a><i class="far fa-circle"></i> Registrar</a>
+                            <a><i class="fas fa-edit"></i> Registrar</a>
                         </router-link>
                         <router-link tag="li" to="/referencia" exact-active-class="active" 
                             v-if="(routesAuth.some(data => { return ['all', 'referencia.index'].includes(data) }))">
-                            <a><i class="far fa-circle"></i> Panel de Referencias</a>
+                            <a><i class="fas fa-chalkboard"></i> Panel de Referencias</a>
                         </router-link>
                         <router-link tag="li" to="/referencia/reporte" exact-active-class="active" 
                             v-if="(routesAuth.some(data => { return ['all', 'referencia.reporte'].includes(data) }))">
-                            <a><i class="far fa-circle"></i> Reporte de Referencias</a>
+                            <a><i class="fas fa-chart-bar"></i> Reporte de Referencias</a>
                         </router-link>
                     </ul>
                 </li>
@@ -123,3 +123,10 @@ export default {
 </script>
 
 
+<style>
+
+ul.treeview-menu > li {
+    overflow: hidden;
+}
+
+</style>

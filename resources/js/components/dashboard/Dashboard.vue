@@ -30,12 +30,12 @@
                                 </div>
 
                                 <div class="item" v-if="(routesAuth.some(data => { return ['all', 'referencia_2'].includes(data) }))">
-                                    <router-link class="icon-file_manager" to="/Referencia/Registrar"> <img src="../../../images/dashboard/icon_referencia.png" class="img-item-panel"> </router-link>
+                                    <router-link class="icon-file_manager" to="/Referencia/Registrar"> <img src="../../../images/dashboard/icon_referencia_panel.png" class="img-item-panel"> </router-link>
                                     <router-link class="itemTextWrapper" to="/Referencia/Registrar"> PANEL DE REFERENCIAS </router-link>
                                 </div>
 
                                 <div class="item" v-if="(routesAuth.some(data => { return ['all', 'referencia_3'].includes(data) }))">
-                                    <router-link class="icon-file_manager" to="/Referencia/Registrar"> <img src="../../../images/dashboard/icon_referencia.png" class="img-item-panel"> </router-link>
+                                    <router-link class="icon-file_manager" to="/Referencia/Registrar"> <img src="../../../images/dashboard/icon_referencia_reporte.png" class="img-item-panel"> </router-link>
                                     <router-link class="itemTextWrapper" to="/Referencia/Registrar"> REPORTE DE REFERENCIAS </router-link>
                                 </div>
 

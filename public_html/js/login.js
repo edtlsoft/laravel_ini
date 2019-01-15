@@ -52441,8 +52441,8 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\xampp\htdocs\Laravel\laravel_ini\resources\js\login.js */"./resources/js/login.js");
-module.exports = __webpack_require__(/*! c:\xampp\htdocs\Laravel\laravel_ini\resources\sass\login.scss */"./resources/sass/login.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Laravel\laravel_ini\resources\js\login.js */"./resources/js/login.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel\laravel_ini\resources\sass\login.scss */"./resources/sass/login.scss");
 
 
 /***/ })
