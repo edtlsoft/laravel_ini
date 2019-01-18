@@ -11,8 +11,8 @@
 $fa-font-path: "../webfonts";
 
 
-// Bootstrap
-//@import '~bootstrap/scss/bootstrap'; V4
+// Bootstrap V-3.7
+//@import '~bootstrap/scss/bootstrap'; V-4
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -28,6 +28,13 @@ $fa-font-path: "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";
 
 
+// Select2
+@import "~select2/dist/css/select2.min.css";
+
+
+// Select2 Bootstrap Theme
+@import "~select2-bootstrap-theme/dist/select2-bootstrap.min.css";
+
 
 .logo-huem{
   width: 40px;
@@ -39,11 +46,6 @@ $fa-font-path: "../webfonts";
 .main-header .sidebar-toggle {
   height: 50px !important;
   font-family: "Font Awesome 5 Free" !important;
-}
-
-
-li.active > a {
-  background-color: #ff5050 !important;
 }
 
 

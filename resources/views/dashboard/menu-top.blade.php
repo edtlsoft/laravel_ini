@@ -23,9 +23,9 @@
         <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fas fa-envelope"></i>
-            <span class="label label-success">4</span>
+            <span class="label label-success hidden">4</span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu hidden">
             <li class="header">You have 4 messages</li>
             <li>
                 <!-- inner menu: contains the actual data -->
@@ -100,9 +100,9 @@
         <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fas fa-bell"></i>
-            <span class="label label-warning">10</span>
+            <span class="label label-warning hidden">10</span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu hidden">
             <li class="header">You have 10 notifications</li>
             <li>
                 <!-- inner menu: contains the actual data -->
@@ -142,9 +142,9 @@
         <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fas fa-flag"></i>
-            <span class="label label-danger">9</span>
+            <span class="label label-danger hidden">9</span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu hidden">
             <li class="header">You have 9 tasks</li>
             <li>
                 <!-- inner menu: contains the actual data -->

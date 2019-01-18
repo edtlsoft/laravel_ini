@@ -6,10 +6,15 @@ require('./bootstrap');
 window.Swal = require('sweetalert2');
 
 
+// Select2
+window.select2 = require('select2');
+
+
 // Vue
 window.Vue = require('vue');
 
 
+// Vue Router
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);

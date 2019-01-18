@@ -22,4 +22,7 @@ Route::get('/login2', function () {
 Auth::routes();
 
 
+Route::post('/pagador', 'PagadorController@index')->name('dashboard');
+
+
 Route::get('{path}', 'DashboardController@index')->where('path', '([A-z\d-\/_\.]+)?');

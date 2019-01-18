@@ -20,7 +20,7 @@
 <div class="container-fluid fondo-login" id="app">
 
     <div class="div-logo-scpns">
-        <img src="{{ asset('img/sintranordessa.png') }}" class="img-logo" />
+        <img src="{{ asset('images/huem/LogoHuem.png') }}" class="img-logo" />
     </div>
 
     @csrf

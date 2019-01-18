@@ -117,13 +117,20 @@ export default {
     },
     mounted: function() {
         console.log('Componente menu-left mounted');
-        //this.cerraSesion();
     }
 }
 </script>
 
 
 <style>
+
+ul.sidebar-menu > li.active > a, 
+ul.sidebar-menu > li > a:hover,
+ul.treeview-menu > li.active > a,
+ul.treeview-menu > li > a:hover {
+  background-color: #010066 !important;
+}
+
 
 ul.treeview-menu > li {
     overflow: hidden;
